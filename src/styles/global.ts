@@ -23,7 +23,6 @@ export default createGlobalStyle`
     max-width: 960px;
     width: 100%;
     margin: 0 auto;
-    padding: 40px 20px;
   }
 
   body, button, textarea, input {
@@ -32,5 +31,9 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  ul {
+    list-style: none;
   }
 `;

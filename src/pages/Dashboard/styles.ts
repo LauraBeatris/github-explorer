@@ -1,5 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
+
+interface FormProps {
+  hasError: boolean;
+}
 
 export const Container = styled.section`
   width: 100%;
@@ -9,13 +13,13 @@ export const Container = styled.section`
 
 export const Title = styled.h1`
   font-size: 48px;
-  color: ${({ theme }): string => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.dark};
   max-width: 450px;
   line-height: 56px;
   margin-top: 80px;
 `;
 
-export const Form = styled.form`
+export const Form = styled.form<FormProps>`
   margin-top: 40px;
   max-width: 700px;
   width: 100%;
@@ -28,19 +32,27 @@ export const Form = styled.form`
     padding: 0 24px;
     border: 0;
     border-radius: 5px 0 0 5px;
+    border: 1px solid ${({ theme }) => theme.colors.background};
+
+    ${({ hasError, theme }) =>
+      hasError &&
+      css`
+        border: 2px solid ${theme.colors.error};
+        border-right: 0;
+      `};
   }
 
   button {
     width: 210px;
     height: 70px;
-    background: ${({ theme }): string => theme.colors.green};
+    background: ${({ theme }) => theme.colors.green};
     border: 0;
     color: #fff;
     font-weight: bold;
     transition: background-color 0.2s;
 
     &:hover {
-      background: ${({ theme }): string => shade(0.2, theme.colors.green)};
+      background: ${({ theme }) => shade(0.2, theme.colors.green)};
     }
   }
 `;
@@ -62,7 +74,7 @@ export const Repositories = styled.ul`
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${({ theme }): string => theme.colors.dark};
+    background: ${({ theme }) => theme.colors.dark};
     border-radius: 7.5px;
     border-left: 5px solid #f1f1f1;
     border-right: 5px solid #f1f1f1;
@@ -85,7 +97,6 @@ export const Repositories = styled.ul`
     }
 
     img {
-      min-width: 64px;
       height: 64px;
       border-radius: 50%;
     }
@@ -98,23 +109,30 @@ export const Repositories = styled.ul`
 
     div {
       margin-left: 16px;
+      flex: 1;
 
       strong {
         font-size: 20px;
-        color: ${({ theme }): string => theme.colors['gray-dark']};
+        color: ${({ theme }) => theme.colors['gray-dark']};
       }
 
       p {
         margin-top: 4px;
         font-size: 18px;
-        color: ${({ theme }): string => theme.colors.gray};
+        color: ${({ theme }) => theme.colors.gray};
       }
     }
 
     svg {
       margin-left: auto;
-      color: ${({ theme }): string => theme.colors['gray-light']};
-      font-size: 32px;
+      color: ${({ theme }) => theme.colors['gray-light']};
+      font-size: 24px;
     }
   }
+`;
+
+export const Error = styled.span`
+  display: block;
+  color: ${({ theme }) => theme.colors.error};
+  margin-top: 8px;
 `;

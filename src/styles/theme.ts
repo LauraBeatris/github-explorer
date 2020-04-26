@@ -6,5 +6,6 @@ export default {
     gray: '#a8a8b3',
     'gray-light': '#CBCBD6',
     green: '#04d361',
+    error: '#c53030',
   },
 };

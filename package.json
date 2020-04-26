@@ -12,6 +12,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/styled-components": "^5.1.0",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "axios": "^0.19.2",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-react": "^7.19.0",
     "polished": "^3.5.2",

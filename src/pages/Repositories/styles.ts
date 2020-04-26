@@ -1,9 +1,4 @@
-import styled, { css } from 'styled-components';
-import { shade } from 'polished';
-
-interface FormProps {
-  hasError: boolean;
-}
+import styled from 'styled-components';
 
 export const Container = styled.section`
   width: 100%;
@@ -11,55 +6,76 @@ export const Container = styled.section`
   padding: 40px 20px;
 `;
 
-export const Title = styled.h1`
-  font-size: 48px;
-  color: ${({ theme }) => theme.colors.dark};
-  max-width: 450px;
-  line-height: 56px;
+export const RepositoryDetails = styled.div`
   margin-top: 80px;
-`;
 
-export const Form = styled.form<FormProps>`
-  margin-top: 40px;
-  max-width: 700px;
-  width: 100%;
+  header {
+    display: flex;
+    align-items: center;
 
-  display: flex;
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+    }
 
-  input {
-    flex: 1;
-    height: 70px;
-    padding: 0 24px;
-    border: 0;
-    border-radius: 5px 0 0 5px;
-    border: 1px solid ${({ theme }) => theme.colors.background};
+    div {
+      margin-left: 24px;
 
-    ${({ hasError, theme }) =>
-      hasError &&
-      css`
-        border: 2px solid ${theme.colors.error};
-        border-right: 0;
-      `};
+      strong,
+      p {
+        display: block;
+      }
+
+      strong {
+        font-size: 36px;
+        color: ${({ theme }) => theme.colors['gray-dark']};
+      }
+
+      p {
+        font-size: 18px;
+        color: ${({ theme }) => theme.colors['gray-medium']};
+      }
+    }
   }
 
-  button {
-    width: 210px;
-    height: 70px;
-    background: ${({ theme }) => theme.colors.green};
-    border: 0;
-    color: #fff;
-    font-weight: bold;
-    transition: background-color 0.2s;
+  ul {
+    margin-top: 40px;
+    display: flex;
 
-    &:hover {
-      background: ${({ theme }) => shade(0.2, theme.colors.green)};
+    li {
+      @media screen and (min-width: 800px) {
+        & + li {
+          margin-left: 80px;
+        }
+      }
+
+      @media screen and (max-width: 800px) {
+        & + li {
+          margin-left: 30px;
+        }
+      }
+
+      strong,
+      span {
+        display: block;
+      }
+
+      strong {
+        font-size: 36px;
+        color: ${({ theme }) => theme.colors['gray-dark']};
+      }
+
+      span {
+        margin-top: 4px;
+        color: ${({ theme }) => theme.colors.gray};
+      }
     }
   }
 `;
 
-export const Repositories = styled.ul`
+export const Issues = styled.ul`
   margin-top: 80px;
-  max-width: 700px;
   width: 100%;
 
   max-height: 400px;
@@ -95,11 +111,6 @@ export const Repositories = styled.ul`
       transform: translateX(5px);
     }
 
-    img {
-      height: 64px;
-      border-radius: 50%;
-    }
-
     a {
       padding: 24px;
       text-decoration: none;
@@ -128,10 +139,4 @@ export const Repositories = styled.ul`
       color: ${({ theme }) => theme.colors['gray-light']};
     }
   }
-`;
-
-export const Error = styled.span`
-  display: block;
-  color: ${({ theme }) => theme.colors.error};
-  margin-top: 8px;
 `;

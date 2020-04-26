@@ -2,9 +2,9 @@ import React, { FormEvent, useRef, useState, useEffect } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-import logo from '../../assets/logo.svg';
 import { Container, Title, Form, Error, Repositories } from './styles';
 import api from '../../services/api';
+import Header from '../../components/Header';
 
 interface Repository {
   full_name: string;
@@ -46,26 +46,29 @@ const Dashboard: React.FC = () => {
 
     if (!newRepo) return setInputError('Digite o nome do repositório');
 
+    const findRepositoryWithTheSameName = repositories.find(
+      repository => newRepo === repository.full_name,
+    );
+    if (findRepositoryWithTheSameName)
+      return setInputError('Esse repositório já foi adicionado');
+
     try {
       setLoading(true);
 
       const response = await api.get(`repos/${newRepo}`);
       const repository = response.data;
 
-      const findRepositoryWithTheSameName = repositories.find(
-        foundRepository => repository.full_name === foundRepository.full_name,
-      );
-
-      if (findRepositoryWithTheSameName)
-        return setInputError('Esse repositório já foi adicionado');
-
       setRepositories(currentRepositories => [
         ...currentRepositories,
         repository,
       ]);
       setInputError('');
+      if (repositoryInputRef.current) repositoryInputRef.current.value = '';
+
+      return repository;
     } catch (err) {
       setInputError('Não foi possível encontrar o repositório');
+      return err;
     } finally {
       setLoading(false);
     }
@@ -73,12 +76,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <Container>
-      <img
-        src={logo}
-        alt="GitHub Explorer"
-        aria-label="GitHub Explorer"
-        title="GitHub Explorer | Explore amazing repositories"
-      />
+      <Header />
 
       <Title>Explore repositórios no GitHub</Title>
 
@@ -94,6 +92,7 @@ const Dashboard: React.FC = () => {
           {loading ? 'Carregando...' : 'Pesquisar'}
         </button>
       </Form>
+
       {inputError && <Error>{inputError}</Error>}
 
       <Repositories>
@@ -113,7 +112,7 @@ const Dashboard: React.FC = () => {
                 <p>{repository.description}</p>
               </div>
 
-              <FiChevronRight />
+              <FiChevronRight size={18} />
             </Link>
           </li>
         ))}

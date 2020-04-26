@@ -26,6 +26,11 @@ export const Form = styled.form<FormProps>`
 
   display: flex;
 
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   input {
     flex: 1;
     height: 70px;
@@ -40,6 +45,10 @@ export const Form = styled.form<FormProps>`
         border: 2px solid ${theme.colors.error};
         border-right: 0;
       `};
+
+    @media screen and (max-width: 600px) {
+      flex: unset;
+    }
   }
 
   button {
@@ -50,6 +59,10 @@ export const Form = styled.form<FormProps>`
     color: #fff;
     font-weight: bold;
     transition: background-color 0.2s;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
 
     &:hover {
       background: ${({ theme }) => shade(0.2, theme.colors.green)};

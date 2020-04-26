@@ -59,8 +59,8 @@ const Dashboard: React.FC = () => {
       const repository = response.data;
 
       setRepositories(currentRepositories => [
-        ...currentRepositories,
         repository,
+        ...currentRepositories,
       ]);
       setInputError('');
       if (repositoryInputRef.current) repositoryInputRef.current.value = '';

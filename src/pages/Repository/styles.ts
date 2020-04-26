@@ -1,9 +1,16 @@
 import styled from 'styled-components';
+import { lighten } from 'polished';
 
 export const Container = styled.section`
   width: 100%;
   margin: auto;
   padding: 40px 20px;
+
+  h3 {
+    margin: auto;
+    width: 350px;
+    margin-top: 30vh;
+  }
 `;
 
 export const RepositoryDetails = styled.div`
@@ -21,6 +28,7 @@ export const RepositoryDetails = styled.div`
 
     div {
       margin-left: 24px;
+      flex: 1;
 
       strong,
       p {
@@ -44,6 +52,31 @@ export const RepositoryDetails = styled.div`
     display: flex;
 
     li {
+      position: relative;
+      cursor: pointer;
+
+      &.active {
+        &:after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 4px;
+          margin-top: 10px;
+          border-radius: 2px;
+          background: ${({ theme }) => theme.colors.dark};
+        }
+      }
+
+      &:hover {
+        strong {
+          color: ${({ theme }) => lighten(0.15, theme.colors.dark)};
+        }
+
+        span {
+          color: ${({ theme }) => lighten(0.15, theme.colors.gray)};
+        }
+      }
+
       @media screen and (min-width: 800px) {
         & + li {
           margin-left: 80px;
@@ -56,9 +89,17 @@ export const RepositoryDetails = styled.div`
         }
       }
 
+      button {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: none;
+      }
+
       strong,
       span {
         display: block;
+        transition: color 0.2s;
       }
 
       strong {
@@ -139,4 +180,11 @@ export const Issues = styled.ul`
       color: ${({ theme }) => theme.colors['gray-light']};
     }
   }
+`;
+
+export const Error = styled.h3`
+  font-size: 24px;
+  margin-right: auto;
+  margin-top: 80px;
+  color: ${({ theme }) => theme.colors['grey-dark']};
 `;

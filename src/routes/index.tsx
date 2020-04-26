@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Dashboard from '../pages/Dashboard';
-import Repositories from '../pages/Repositories';
+import Repositories from '../pages/Repository';
 
 const Routes: React.FC = () => (
   <BrowserRouter>

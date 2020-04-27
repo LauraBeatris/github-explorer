@@ -28,7 +28,7 @@
 </p>
 
 
-## Table of Contents
+## 📖 Table of Contents
 
 - [Features](#features)
 - [Feedback](#feedback)
@@ -36,6 +36,6 @@
 - [Acknowledgments](#acknowledgments)
 
 
-## Acknowledgments
+## 🖖🏼 Acknowledgments
 
 Thanks to [Rocketseat](https://rocketseat.com.br/) for supporting the community and sharing an amazing content. 

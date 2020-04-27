@@ -78,8 +78,6 @@ Run the following scripts in order to execute the application in development mod
 
 Feel free to send me feedback on [LinkedIn](https://www.linkedin.com/in/laurabeatris/) or [file an issue](https://github.com/LauraBeatris/github-explorer/issues/new). Feature requests are always welcome.
 
-If there's anything you'd like to chat about, please feel free to join our [Gitter chat](https://gitter.im/git-point)!
-
 ## Acknowledgments
 
 Thanks to [Rocketseat](https://rocketseat.com.br/) for supporting the community and sharing an amazing content. 

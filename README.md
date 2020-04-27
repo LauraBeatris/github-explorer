@@ -19,11 +19,11 @@
   </a>
   
   <a>
-    <img alt="Stargazers" title="Stargazers" src="https://img.shields.io/github/stars/LauraBeatris/github-explorer?color=%23999&style=social">
+    <img alt="Languages" title="Languages" src="https://img.shields.io/github/languages/count/LauraBeatris/github-explorer?color=%23999">
   </a>
   
   <a>
-    <img alt="Languages" title="Languages" src="https://img.shields.io/github/languages/count/LauraBeatris/github-explorer?color=%23999">
+    <img alt="Stargazers" title="Stargazers" src="https://img.shields.io/github/stars/LauraBeatris/github-explorer?color=%23999&style=social">
   </a>
 </p>
 

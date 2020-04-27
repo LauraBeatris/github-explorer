@@ -54,7 +54,12 @@ A few of the things you can do with Github Explorer:
   <img src = "https://i.ibb.co/r4FLKn2/Screen-Shot-2020-04-27-at-06-49-36.png" width=700>
 </p>
 
+🎙 ## Feedback
 
-## 🖖🏼 Acknowledgments
+Feel free to send me feedback on [LinkedIn](https://www.linkedin.com/in/laurabeatris/) or [file an issue](https://github.com/LauraBeatris/github-explorer/issues/new). Feature requests are always welcome.
+
+If there's anything you'd like to chat about, please feel free to join our [Gitter chat](https://gitter.im/git-point)!
+
+🖖🏼 ## Acknowledgments
 
 Thanks to [Rocketseat](https://rocketseat.com.br/) for supporting the community and sharing an amazing content. 

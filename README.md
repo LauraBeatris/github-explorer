@@ -47,11 +47,11 @@ A few of the things you can do with Github Explorer:
 * Portuguese/English support (COMING SOON)
 
 <p align="center">
-  <img src = "https://ibb.co/bR51bgr" width=700>
+  <img src = "https://i.ibb.co/yBF04n8/Screen-Shot-2020-04-27-at-06-49-00.png" width=700>
 </p>
 
 <p align="center">
-  <img src = "https://ibb.co/LnYqD4d" width=700>
+  <img src = "https://i.ibb.co/r4FLKn2/Screen-Shot-2020-04-27-at-06-49-36.png" width=700>
 </p>
 
 

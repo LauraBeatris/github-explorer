@@ -51,7 +51,7 @@ A few of the things you can do with Github Explorer:
 </p>
 
 <p align="center">
-  <img src = "https://imgur.com/azyb8Pk" width=700>
+  <img src = "https://imgur.com/4eFwyBa" width=700>
 </p>
 
 

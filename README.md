@@ -31,8 +31,8 @@
 ## 📖 Table of Contents
 
 - [Features](#features)
+- [Installation](#installation)
 - [Feedback](#feedback)
-- [Contributors](#contributors)
 - [Acknowledgments](#acknowledgments)
 
 ## Features
@@ -53,6 +53,24 @@ A few of the things you can do with Github Explorer:
 <p align="center">
   <img src = "https://i.ibb.co/r4FLKn2/Screen-Shot-2020-04-27-at-06-49-36.png" width=700>
 </p>
+
+## Installation
+
+First of all, you may need to clone this repo 
+
+```
+  git clone https://github.com/LauraBeatris/github-explorer.git``` amazing-github-explorer
+```
+
+Run the following scripts in order to execute the application in development mode 
+
+```
+  // Install the dependencies
+  yarn install
+  
+  // Start the application
+  // yarn start
+```
 
 ## Feedback
 

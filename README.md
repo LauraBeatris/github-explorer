@@ -35,6 +35,25 @@
 - [Contributors](#contributors)
 - [Acknowledgments](#acknowledgments)
 
+## Features
+
+A few of the things you can do with Github Explorer:
+
+* Explore for github repositories and add them to your list
+* View the list of issues of a repository
+* View the list of forks of a repository
+* View the list of stargazers of a repository
+* A nice dark theme (COMING SOON)
+* Portuguese/English support (COMING SOON)
+
+<p align="center">
+  <img src = "https://imgur.com/a/8eqo3XO" width=700>
+</p>
+
+<p align="center">
+  <img src = "https://imgur.com/azyb8Pk" width=700>
+</p>
+
 
 ## 🖖🏼 Acknowledgments
 

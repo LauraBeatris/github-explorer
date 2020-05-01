@@ -58,7 +58,7 @@ A few of the things you can do with Github Explorer:
 
 ## Installation
 
-First of all, you may need to clone this repo 
+First of all, you may clone this repo 
 
 ```
   git clone https://github.com/LauraBeatris/github-explorer.git amazing-github-explorer

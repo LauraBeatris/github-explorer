@@ -3,11 +3,11 @@ import { ThemeProvider } from 'styled-components';
 
 import Routes from './routes';
 import GlobalStyles from './styles/global';
-import theme from './styles/theme';
+import { defaultTheme } from './styles/theme';
 
 const App: React.FC = () => (
   <>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={defaultTheme}>
       <Routes />
     </ThemeProvider>
     <GlobalStyles />

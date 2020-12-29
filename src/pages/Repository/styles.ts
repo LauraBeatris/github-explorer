@@ -186,5 +186,5 @@ export const Error = styled.h3`
   font-size: 24px;
   margin-right: auto;
   margin-top: 80px;
-  color: ${({ theme }) => theme.colors['grey-dark']};
+  color: ${({ theme }) => theme.colors['gray-dark']};
 `;

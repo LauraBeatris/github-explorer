@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { FiChevronRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { api } from "services/api";
 import { useRepositories } from "hooks/useRepositories";
 import { addRepositorySchema } from "schemas/addRepositorySchema";
 import { Button } from "components/Button";
 import { Layout } from "components/Layout";
+import { Input } from "components/Input";
 
 import {
-  Repositories,
-  Title,
   Form,
-  Error,
+  Title,
+  Repositories,
+  AddRepositoryInputError,
 } from "./styles";
 import { RepositoryFormValues } from "./types";
 
@@ -30,66 +30,40 @@ export function Dashboard() {
     resolver: yupResolver(addRepositorySchema),
   });
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [repositories, setRepositories] = useRepositories();
+  const { repositories, addRepository, isLoading } = useRepositories();
 
   const onSubmit: SubmitHandler<RepositoryFormValues> = async (
     data,
   ) => {
     const { repositoryName } = data;
 
-    const findRepositoryWithTheSameName = repositories.find(
-      repository => repositoryName === repository.full_name,
-    );
-
-    if (findRepositoryWithTheSameName) {
+    try {
+      await addRepository(repositoryName);
+    } catch (error) {
       setError("repositoryName", {
         type: "manual",
-        message: "Esse repositório já foi adicionado",
+        message: error.message,
       });
-
-      return;
-    }
-
-    if (!findRepositoryWithTheSameName) {
-      try {
-        setIsLoading(true);
-
-        const response = await api.get(`repos/${repositoryName}`);
-        const repository = response.data;
-
-        setRepositories([
-          ...repositories,
-          repository,
-        ]);
-      } catch (err) {
-        setError("repositoryName", {
-          type: "manual",
-          message: "Não foi possível encontrar o repositório",
-        });
-      } finally {
-        setIsLoading(false);
-      }
     }
   };
 
   const { isDirty, isValid } = formState;
+  const { repositoryName: repositoryNameError } = errors;
 
   const isButtonDisabled = isLoading || !isValid || !isDirty;
-  const isFormValid = !isValid && isDirty;
-
-  const { repositoryName: repositoryNameError } = errors;
+  const hasError = Boolean(repositoryNameError?.message) && !isValid && isDirty;
 
   return (
     <Layout>
       <Title>Explore repositórios no GitHub</Title>
 
-      <Form isValid={isFormValid} onSubmit={handleSubmit(onSubmit)}>
-        <input
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Input
           id="repositoryName"
           ref={register}
           type="text"
           name="repositoryName"
+          hasError={hasError}
           aria-label="Repository Name"
           placeholder="Digite o nome do repositório"
         />
@@ -103,7 +77,11 @@ export function Dashboard() {
         </Button>
       </Form>
 
-      {repositoryNameError && <Error>{repositoryNameError.message}</Error>}
+      {repositoryNameError && (
+        <AddRepositoryInputError>
+          {repositoryNameError.message}
+        </AddRepositoryInputError>
+      )}
 
       <Repositories>
         {repositories.map(repository => (

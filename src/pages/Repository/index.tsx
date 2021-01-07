@@ -8,8 +8,8 @@ import { Layout } from "components/Layout";
 import { Header } from "components/Header";
 
 import {
-  Error,
   Issues,
+  RepositoryError,
   RepositoryDetails,
 } from "./styles";
 import { RepositoryParams, Issue } from "./types";
@@ -110,10 +110,10 @@ export function Repositories() {
       )}
 
       {repositoryError && (
-        <Error>
+        <RepositoryError>
           Não foi possível encontrar o repositório, você escreveu o nome
           correto?
-        </Error>
+        </RepositoryError>
       )}
 
       <Issues>

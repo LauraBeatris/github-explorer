@@ -1,18 +1,6 @@
 import styled from "styled-components";
 import { lighten } from "polished";
 
-export const Container = styled.section`
-  width: 100%;
-  margin: auto;
-  padding: 40px 20px;
-
-  h3 {
-    margin: auto;
-    width: 350px;
-    margin-top: 30vh;
-  }
-`;
-
 export const RepositoryDetails = styled.div`
   margin-top: 80px;
 
@@ -182,7 +170,7 @@ export const Issues = styled.ul`
   }
 `;
 
-export const Error = styled.h3`
+export const RepositoryError = styled.h3`
   font-size: 24px;
   margin-right: auto;
   margin-top: 80px;

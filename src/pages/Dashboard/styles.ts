@@ -1,9 +1,4 @@
-import styled, { css } from "styled-components";
-import { shade } from "polished";
-
-interface FormProps {
-  isValid: boolean;
-}
+import styled from "styled-components";
 
 export const Title = styled.h1`
   font-size: 48px;
@@ -13,7 +8,7 @@ export const Title = styled.h1`
   margin-top: 80px;
 `;
 
-export const Form = styled.form<FormProps>`
+export const Form = styled.form`
   margin-top: 40px;
   max-width: 700px;
   width: 100%;
@@ -23,43 +18,6 @@ export const Form = styled.form<FormProps>`
   @media screen and (max-width: 600px) {
     flex-direction: column;
     align-items: stretch;
-  }
-
-  input {
-    flex: 1;
-    height: 70px;
-    padding: 0 24px;
-    border: 0;
-    border-radius: 5px 0 0 5px;
-    border: 1px solid ${({ theme }) => theme.colors.background};
-
-    ${({ isValid, theme }) => isValid
-      && css`
-        border: 2px solid ${theme.colors.error};
-        border-right: 0;
-      `};
-
-    @media screen and (max-width: 600px) {
-      flex: unset;
-    }
-  }
-
-  button {
-    width: 210px;
-    height: 70px;
-    background: ${({ theme }) => theme.colors.green};
-    border: 0;
-    color: #fff;
-    font-weight: bold;
-    transition: background-color 0.2s;
-
-    @media screen and (max-width: 600px) {
-      width: 100%;
-    }
-
-    &:hover {
-      background: ${({ theme }) => shade(0.2, theme.colors.green)};
-    }
   }
 `;
 
@@ -136,7 +94,7 @@ export const Repositories = styled.ul`
   }
 `;
 
-export const Error = styled.span`
+export const AddRepositoryInputError = styled.span`
   display: block;
   color: ${({ theme }) => theme.colors.error};
   margin-top: 8px;

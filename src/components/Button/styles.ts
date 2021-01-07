@@ -7,7 +7,7 @@ export const StyledButton = styled.button`
     height: 70px;
     background: ${theme.colors.green};
     border: 0;
-    color: ${theme.colors.green};
+    color: ${theme.colors.white};
     font-weight: bold;
     transition: background-color 0.2s;
 

@@ -1,9 +1,10 @@
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import React from "react";
+import { ThemeProvider } from "styled-components";
 
-import Routes from './routes';
-import GlobalStyles from './styles/global';
-import { theme } from './styles/theme';
+import GlobalStyles from "styles/global";
+import { theme } from "styles/theme";
+
+import Routes from "./routes";
 
 const App: React.FC = () => (
   <>

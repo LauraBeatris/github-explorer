@@ -1,9 +1,10 @@
-import React from 'react';
-import { FiChevronLeft } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { FiChevronLeft } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
-import { Container } from './styles';
-import logo from '../../assets/logo.svg';
+import logo from "assets/logo.svg";
+
+import { Container } from "./styles";
 
 interface HeaderProps {
   backToDashboard?: boolean;

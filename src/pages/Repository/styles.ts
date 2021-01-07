@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { lighten } from 'polished';
+import styled from "styled-components";
+import { lighten } from "polished";
 
 export const Container = styled.section`
   width: 100%;
@@ -37,12 +37,12 @@ export const RepositoryDetails = styled.div`
 
       strong {
         font-size: 36px;
-        color: ${({ theme }) => theme.colors['gray-dark']};
+        color: ${({ theme }) => theme.colors["gray-dark"]};
       }
 
       p {
         font-size: 18px;
-        color: ${({ theme }) => theme.colors['gray-medium']};
+        color: ${({ theme }) => theme.colors["gray-medium"]};
       }
     }
   }
@@ -104,7 +104,7 @@ export const RepositoryDetails = styled.div`
 
       strong {
         font-size: 36px;
-        color: ${({ theme }) => theme.colors['gray-dark']};
+        color: ${({ theme }) => theme.colors["gray-dark"]};
       }
 
       span {
@@ -165,7 +165,7 @@ export const Issues = styled.ul`
 
       strong {
         font-size: 20px;
-        color: ${({ theme }) => theme.colors['gray-dark']};
+        color: ${({ theme }) => theme.colors["gray-dark"]};
       }
 
       p {
@@ -177,7 +177,7 @@ export const Issues = styled.ul`
 
     svg {
       margin-left: auto;
-      color: ${({ theme }) => theme.colors['gray-light']};
+      color: ${({ theme }) => theme.colors["gray-light"]};
     }
   }
 `;
@@ -186,5 +186,5 @@ export const Error = styled.h3`
   font-size: 24px;
   margin-right: auto;
   margin-top: 80px;
-  color: ${({ theme }) => theme.colors['gray-dark']};
+  color: ${({ theme }) => theme.colors["gray-dark"]};
 `;

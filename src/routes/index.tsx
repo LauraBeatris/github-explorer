@@ -1,8 +1,8 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Dashboard from '../pages/Dashboard';
-import Repositories from '../pages/Repository';
+import Dashboard from "pages/Dashboard";
+import Repositories from "pages/Repository";
 
 const Routes: React.FC = () => (
   <BrowserRouter>

@@ -1,10 +1,22 @@
-import React, { FormEvent, useRef, useState, useEffect } from 'react';
-import { FiChevronRight } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import React, {
+  useRef,
+  useState,
+  FormEvent,
+  useEffect,
+} from "react";
+import { FiChevronRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
-import { Container, Title, Form, Error, Repositories } from './styles';
-import api from '../../services/api';
-import Header from '../../components/Header';
+import api from "services/api";
+import Header from "components/Header";
+
+import {
+  Repositories,
+  Container,
+  Title,
+  Form,
+  Error,
+} from "./styles";
 
 interface Repository {
   full_name: string;
@@ -15,11 +27,11 @@ interface Repository {
   };
 }
 
-const Dashboard: React.FC = () => {
+export default function Dashboard() {
   const repositoryInputRef = useRef<HTMLInputElement>(null);
   const [repositories, setRepositories] = useState<Repository[]>(() => {
     const storagedRepositories = localStorage.getItem(
-      '@GithubExplorer:repositories',
+      "@GithubExplorer:repositories",
     );
 
     if (storagedRepositories) {
@@ -28,12 +40,12 @@ const Dashboard: React.FC = () => {
     return [];
   });
 
-  const [inputError, setInputError] = useState('');
+  const [inputError, setInputError] = useState("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     localStorage.setItem(
-      '@GithubExplorer:repositories',
+      "@GithubExplorer:repositories",
       JSON.stringify(repositories),
     );
   }, [repositories]);
@@ -44,13 +56,12 @@ const Dashboard: React.FC = () => {
     event.preventDefault();
     const newRepo = repositoryInputRef?.current?.value;
 
-    if (!newRepo) return setInputError('Digite o nome do repositório');
+    if (!newRepo) return setInputError("Digite o nome do repositório");
 
     const findRepositoryWithTheSameName = repositories.find(
       repository => newRepo === repository.full_name,
     );
-    if (findRepositoryWithTheSameName)
-      return setInputError('Esse repositório já foi adicionado');
+    if (findRepositoryWithTheSameName) return setInputError("Esse repositório já foi adicionado");
 
     try {
       setLoading(true);
@@ -62,12 +73,12 @@ const Dashboard: React.FC = () => {
         repository,
         ...currentRepositories,
       ]);
-      setInputError('');
-      if (repositoryInputRef.current) repositoryInputRef.current.value = '';
+      setInputError("");
+      if (repositoryInputRef.current) repositoryInputRef.current.value = "";
 
       return repository;
     } catch (err) {
-      setInputError('Não foi possível encontrar o repositório');
+      setInputError("Não foi possível encontrar o repositório");
       return err;
     } finally {
       setLoading(false);
@@ -89,7 +100,7 @@ const Dashboard: React.FC = () => {
           ref={repositoryInputRef}
         />
         <button type="submit" disabled={loading}>
-          {loading ? 'Carregando...' : 'Pesquisar'}
+          {loading ? "Carregando..." : ""}
         </button>
       </Form>
 
@@ -119,6 +130,5 @@ const Dashboard: React.FC = () => {
       </Repositories>
     </Container>
   );
-};
+}
 
-export default Dashboard;

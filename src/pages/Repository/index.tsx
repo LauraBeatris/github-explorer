@@ -1,18 +1,29 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { FiChevronRight } from "react-icons/fi";
-import { useRouteMatch } from "react-router-dom";
+import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import { useRouteMatch, Link } from "react-router-dom";
 
 import { Repository } from "shared/types";
-import { Header } from "components/Header";
 import { api } from "services/api";
+import { Layout } from "components/Layout";
+import { Header } from "components/Header";
 
 import {
   Error,
   Issues,
-  Container,
   RepositoryDetails,
 } from "./styles";
 import { RepositoryParams, Issue } from "./types";
+
+function RepositoryHeader() {
+  return (
+    <Header>
+      <Link to="/">
+        <FiChevronLeft size={16} />
+        Voltar
+      </Link>
+    </Header>
+  );
+}
 
 export function Repositories() {
   const { params } = useRouteMatch<RepositoryParams>();
@@ -47,9 +58,7 @@ export function Repositories() {
   }, []);
 
   return (
-    <Container>
-      <Header backToDashboard />
-
+    <Layout header={<RepositoryHeader />}>
       {repository && (
         <RepositoryDetails>
           <header>
@@ -124,7 +133,7 @@ export function Repositories() {
       </Issues>
 
       {loading && <h3>Carregando informações do repositório...</h3>}
-    </Container>
+    </Layout>
   );
 }
 

@@ -4,15 +4,14 @@ import { Link } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Header } from "components/Header";
 import { api } from "services/api";
 import { useRepositories } from "hooks/useRepositories";
 import { addRepositorySchema } from "schemas/addRepositorySchema";
 import { Button } from "components/Button";
+import { Layout } from "components/Layout";
 
 import {
   Repositories,
-  Container,
   Title,
   Form,
   Error,
@@ -77,17 +76,15 @@ export function Dashboard() {
   const { isDirty, isValid } = formState;
 
   const isButtonDisabled = isLoading || !isValid || !isDirty;
-  const formHasError = !isValid && isDirty;
+  const isFormValid = !isValid && isDirty;
 
   const { repositoryName: repositoryNameError } = errors;
 
   return (
-    <Container>
-      <Header />
-
+    <Layout>
       <Title>Explore repositórios no GitHub</Title>
 
-      <Form hasError={formHasError} onSubmit={handleSubmit(onSubmit)}>
+      <Form isValid={isFormValid} onSubmit={handleSubmit(onSubmit)}>
         <input
           id="repositoryName"
           ref={register}
@@ -130,7 +127,7 @@ export function Dashboard() {
           </li>
         ))}
       </Repositories>
-    </Container>
+    </Layout>
   );
 }
 

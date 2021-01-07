@@ -2,14 +2,8 @@ import styled, { css } from "styled-components";
 import { shade } from "polished";
 
 interface FormProps {
-  hasError: boolean;
+  isValid: boolean;
 }
-
-export const Container = styled.section`
-  width: 100%;
-  margin: auto;
-  padding: 40px 20px;
-`;
 
 export const Title = styled.h1`
   font-size: 48px;
@@ -39,7 +33,7 @@ export const Form = styled.form<FormProps>`
     border-radius: 5px 0 0 5px;
     border: 1px solid ${({ theme }) => theme.colors.background};
 
-    ${({ hasError, theme }) => hasError
+    ${({ isValid, theme }) => isValid
       && css`
         border: 2px solid ${theme.colors.error};
         border-right: 0;

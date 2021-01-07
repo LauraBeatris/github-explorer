@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { shade } from 'polished';
+import styled, { css } from "styled-components";
+import { shade } from "polished";
 
 interface FormProps {
   hasError: boolean;
@@ -39,9 +39,8 @@ export const Form = styled.form<FormProps>`
     border-radius: 5px 0 0 5px;
     border: 1px solid ${({ theme }) => theme.colors.background};
 
-    ${({ hasError, theme }) =>
-      hasError &&
-      css`
+    ${({ hasError, theme }) => hasError
+      && css`
         border: 2px solid ${theme.colors.error};
         border-right: 0;
       `};
@@ -126,7 +125,7 @@ export const Repositories = styled.ul`
 
       strong {
         font-size: 20px;
-        color: ${({ theme }) => theme.colors['gray-dark']};
+        color: ${({ theme }) => theme.colors["gray-dark"]};
       }
 
       p {
@@ -138,7 +137,7 @@ export const Repositories = styled.ul`
 
     svg {
       margin-left: auto;
-      color: ${({ theme }) => theme.colors['gray-light']};
+      color: ${({ theme }) => theme.colors["gray-light"]};
     }
   }
 `;

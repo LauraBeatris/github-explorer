@@ -10,22 +10,23 @@ interface HeaderProps {
   backToDashboard?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ backToDashboard }) => (
-  <Container>
-    <img
-      src={logo}
-      alt="GitHub Explorer"
-      aria-label="GitHub Explorer"
-      title="GitHub Explorer | Explore amazing repositories"
-    />
+export default function Header({ backToDashboard }: HeaderProps) {
+  return (
+    <Container>
+      <img
+        src={logo}
+        alt="GitHub Explorer"
+        aria-label="GitHub Explorer"
+        title="GitHub Explorer | Explore amazing repositories"
+      />
 
-    {backToDashboard && (
-      <Link to="/">
-        <FiChevronLeft size={16} />
-        Voltar
-      </Link>
-    )}
-  </Container>
-);
+      {backToDashboard && (
+        <Link to="/">
+          <FiChevronLeft size={16} />
+          Voltar
+        </Link>
+      )}
+    </Container>
+  );
+}
 
-export default Header;

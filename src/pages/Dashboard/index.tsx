@@ -7,8 +7,8 @@ import React, {
 import { FiChevronRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
-import api from "services/api";
-import Header from "components/Header";
+import { Header } from "components/Header";
+import { api } from "services/api";
 
 import {
   Repositories,
@@ -27,7 +27,7 @@ interface Repository {
   };
 }
 
-export default function Dashboard() {
+export function Dashboard() {
   const repositoryInputRef = useRef<HTMLInputElement>(null);
   const [repositories, setRepositories] = useState<Repository[]>(() => {
     const storagedRepositories = localStorage.getItem(

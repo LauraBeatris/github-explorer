@@ -2,8 +2,8 @@ import React, { useEffect, useState, useCallback } from "react";
 import { FiChevronRight } from "react-icons/fi";
 import { useRouteMatch } from "react-router-dom";
 
-import Header from "components/Header";
-import api from "services/api";
+import { Header } from "components/Header";
+import { api } from "services/api";
 
 import {
   Error,
@@ -42,7 +42,7 @@ interface Issue {
   };
 }
 
-export default function Repositories() {
+export function Repositories() {
   const { params } = useRouteMatch<RepositoryParams>();
 
   const [activeInfo, setActiveInfo] = useState("issues");

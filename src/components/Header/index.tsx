@@ -10,7 +10,7 @@ interface HeaderProps {
   backToDashboard?: boolean;
 }
 
-export default function Header({ backToDashboard }: HeaderProps) {
+export function Header({ backToDashboard }: HeaderProps) {
   return (
     <Container>
       <img

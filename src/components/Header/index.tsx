@@ -5,10 +5,7 @@ import { Link } from "react-router-dom";
 import logo from "assets/logo.svg";
 
 import { Container } from "./styles";
-
-interface HeaderProps {
-  backToDashboard?: boolean;
-}
+import { HeaderProps } from "./types";
 
 export function Header({ backToDashboard }: HeaderProps) {
   return (

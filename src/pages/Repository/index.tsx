@@ -11,36 +11,7 @@ import {
   Container,
   RepositoryDetails,
 } from "./styles";
-
-/*
-  2 - Shimmer effect for loading
-  4 - Show issues, forks and who started
-*/
-
-interface RepositoryParams {
-  repository: string;
-}
-
-interface Repository {
-  full_name: string;
-  description: string;
-  stargazers_count: number;
-  forks_count: number;
-  open_issues_count: number;
-  owner: {
-    avatar_url: string;
-    login: string;
-  };
-}
-
-interface Issue {
-  id: number;
-  title: string;
-  html_url: string;
-  user: {
-    login: string;
-  };
-}
+import { RepositoryParams, Repository, Issue } from "./types";
 
 export function Repositories() {
   const { params } = useRouteMatch<RepositoryParams>();

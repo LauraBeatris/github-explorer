@@ -17,15 +17,7 @@ import {
   Form,
   Error,
 } from "./styles";
-
-interface Repository {
-  full_name: string;
-  description: string;
-  owner: {
-    login: string;
-    avatar_url: string;
-  };
-}
+import  { Repository } from './types'
 
 export function Dashboard() {
   const repositoryInputRef = useRef<HTMLInputElement>(null);

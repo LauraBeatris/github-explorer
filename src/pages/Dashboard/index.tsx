@@ -7,6 +7,7 @@ import React, {
 import { FiChevronRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
+import  { Repository } from 'shared/types'
 import { Header } from "components/Header";
 import { api } from "services/api";
 
@@ -17,7 +18,6 @@ import {
   Form,
   Error,
 } from "./styles";
-import  { Repository } from './types'
 
 export function Dashboard() {
   const repositoryInputRef = useRef<HTMLInputElement>(null);

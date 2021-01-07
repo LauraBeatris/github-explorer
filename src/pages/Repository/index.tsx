@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { FiChevronRight } from "react-icons/fi";
 import { useRouteMatch } from "react-router-dom";
 
+import { Repository } from "shared/types";
 import { Header } from "components/Header";
 import { api } from "services/api";
 
@@ -11,7 +12,7 @@ import {
   Container,
   RepositoryDetails,
 } from "./styles";
-import { RepositoryParams, Repository, Issue } from "./types";
+import { RepositoryParams, Issue } from "./types";
 
 export function Repositories() {
   const { params } = useRouteMatch<RepositoryParams>();

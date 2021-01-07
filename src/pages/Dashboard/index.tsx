@@ -100,7 +100,7 @@ export function Dashboard() {
           ref={repositoryInputRef}
         />
         <button type="submit" disabled={loading}>
-          {loading ? "Carregando..." : ""}
+          {loading ? "Carregando..." : "Pesquisar"}
         </button>
       </Form>
 

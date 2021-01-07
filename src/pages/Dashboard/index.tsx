@@ -8,6 +8,7 @@ import { Header } from "components/Header";
 import { api } from "services/api";
 import { useRepositories } from "hooks/useRepositories";
 import { addRepositorySchema } from "schemas/addRepositorySchema";
+import { Button } from "components/Button";
 
 import {
   Repositories,
@@ -30,7 +31,7 @@ export function Dashboard() {
     resolver: yupResolver(addRepositorySchema),
   });
 
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [repositories, setRepositories] = useRepositories();
 
   const onSubmit: SubmitHandler<RepositoryFormValues> = async (
@@ -53,7 +54,7 @@ export function Dashboard() {
 
     if (!findRepositoryWithTheSameName) {
       try {
-        setLoading(true);
+        setIsLoading(true);
 
         const response = await api.get(`repos/${repositoryName}`);
         const repository = response.data;
@@ -68,15 +69,17 @@ export function Dashboard() {
           message: "Não foi possível encontrar o repositório",
         });
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     }
   };
 
   const { isDirty, isValid } = formState;
 
-  const isButtonDisabled = loading || !isValid || !isDirty;
+  const isButtonDisabled = isLoading || !isValid || !isDirty;
   const formHasError = !isValid && isDirty;
+
+  const { repositoryName: repositoryNameError } = errors;
 
   return (
     <Container>
@@ -87,19 +90,23 @@ export function Dashboard() {
       <Form hasError={formHasError} onSubmit={handleSubmit(onSubmit)}>
         <input
           id="repositoryName"
+          ref={register}
           type="text"
           name="repositoryName"
           aria-label="Repository Name"
           placeholder="Digite o nome do repositório"
-          ref={register}
         />
 
-        <button type="submit" disabled={isButtonDisabled}>
-          {loading ? "Carregando..." : "Pesquisar"}
-        </button>
+        <Button
+          type="submit"
+          isLoading={isLoading}
+          disabled={isButtonDisabled}
+        >
+          Pesquisar
+        </Button>
       </Form>
 
-      {errors.repositoryName && <Error>{errors.repositoryName.message}</Error>}
+      {repositoryNameError && <Error>{repositoryNameError.message}</Error>}
 
       <Repositories>
         {repositories.map(repository => (
@@ -108,8 +115,8 @@ export function Dashboard() {
               <img
                 src={repository.owner.avatar_url}
                 alt={repository.owner.login}
-                aria-label={repository.owner.login}
                 title={repository.owner.login}
+                aria-label={repository.owner.login}
               />
 
               <div>

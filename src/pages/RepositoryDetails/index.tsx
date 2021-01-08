@@ -5,7 +5,7 @@ import { PulseLoader } from "react-spinners";
 
 import { Layout } from "components/Layout";
 import { Header } from "components/Header";
-import { Repository } from "shared/types";
+import { Repository } from "shared/githubAPI";
 import { useSelectedRepository } from "contexts/SelectedRepositoryContext";
 import { colors } from "styles/theme/colors";
 

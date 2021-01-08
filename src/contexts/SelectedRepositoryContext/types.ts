@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
-import { Repository } from "shared/types";
+import { Repository } from "shared/githubAPI";
 
 export interface SelectedRepositoryContextPayload {
   isLoading: boolean;

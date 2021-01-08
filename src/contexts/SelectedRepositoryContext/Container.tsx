@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
 import queryString from "query-string";
 
 import { getRepository } from "services/api";
-import { Repository } from "shared/types";
+import { Repository } from "shared/githubAPI";
 
 import { SelectedRepositoryProvider } from ".";
 

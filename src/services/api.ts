@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { Repository } from "shared/types";
+import { Repository } from "shared/githubAPI";
 
 export const api = axios.create({
   baseURL: "https://api.github.com",

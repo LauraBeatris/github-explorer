@@ -2,7 +2,7 @@ import { useMemo, useState, useCallback } from "react";
 import { useLocalStorage } from "@rehooks/local-storage";
 
 import { REPOSITORIES_STORAGE_KEY } from "constants/storage";
-import { Repository } from "shared/types";
+import { Repository } from "shared/githubAPI";
 import { getRepository } from "services/api";
 
 /**

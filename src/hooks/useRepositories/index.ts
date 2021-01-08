@@ -30,8 +30,8 @@ export function useRepositories() {
       const repository = await getRepository(repositoryName);
 
       setRepositories([
-        ...repositories,
         repository,
+        ...repositories,
       ]);
     } catch (err) {
       throw new Error("Não foi possível encontrar o repositório");

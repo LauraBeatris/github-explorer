@@ -84,7 +84,7 @@ export function Dashboard() {
 
       <Repositories>
         {repositories.map(repository => (
-          <Repository repository={repository} />
+          <Repository key={repository.full_name} repository={repository} />
         ))}
       </Repositories>
     </Layout>

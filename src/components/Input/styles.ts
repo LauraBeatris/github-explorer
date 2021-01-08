@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import media from "styled-media-query";
 
 import { InputProps } from "./types";
 
@@ -13,10 +14,11 @@ export const StyledInput = styled.input<InputProps>`
   ${({ hasError, theme }) => hasError
     && css`
       border: 2px solid ${theme.colors.error};
-      border-right: 0;
+      border-right-width: 0;
     `};
 
-  @media screen and (max-width: 600px) {
+  ${media.lessThan("medium")`
     flex: unset;
-  }
+    border-right-width: 2px;
+  `}
 `;

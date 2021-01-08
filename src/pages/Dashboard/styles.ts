@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import media from "styled-media-query";
 
 export const Title = styled.h1`
   font-size: 48px;
@@ -12,20 +13,18 @@ export const Form = styled.form`
   margin-top: 40px;
   max-width: 700px;
   width: 100%;
-
   display: flex;
 
-  @media screen and (max-width: 600px) {
+  ${media.lessThan("medium")`
     flex-direction: column;
     align-items: stretch;
-  }
+  `}
 `;
 
 export const Repositories = styled.ul`
   margin-top: 80px;
   max-width: 700px;
   width: 100%;
-
   max-height: 400px;
   overflow: hidden scroll;
 

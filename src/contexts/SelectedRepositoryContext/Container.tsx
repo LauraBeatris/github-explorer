@@ -31,7 +31,7 @@ export function SelectedRepositoryContainer({ children }: PropsWithChildren<unkn
     },
   );
 
-  const fetchRepository = useCallback(async () => {
+  const refetchRepository = useCallback(async () => {
     if (!name) {
       return;
     }
@@ -43,16 +43,16 @@ export function SelectedRepositoryContainer({ children }: PropsWithChildren<unkn
   ]);
 
   useEffect(() => {
-    const shouldFetchRepository = Boolean(name) && !selectedRepository;
+    const shouldRefetchRepository = Boolean(name) && !selectedRepository;
 
-    if (!shouldFetchRepository) {
+    if (!shouldRefetchRepository) {
       return;
     }
 
-    fetchRepository();
+    refetchRepository();
   }, [
     name,
-    fetchRepository,
+    refetchRepository,
     selectedRepository,
   ]);
 

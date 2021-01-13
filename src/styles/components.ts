@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
 export const List = styled.ul`
-  margin-top: 80px;
   max-width: 700px;
   width: 100%;
   max-height: 400px;
@@ -72,4 +71,12 @@ export const List = styled.ul`
       }
     }
   `}
+`;
+
+export const CenterLoadingContainer = styled.div`
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

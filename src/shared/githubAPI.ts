@@ -9,3 +9,16 @@ export interface Repository {
     login: string;
   };
 }
+
+export interface PullRequest {
+  id: string;
+  title: string;
+  html_url: string;
+}
+
+export interface Issue {
+  id: string;
+  title: string;
+  html_url: string;
+  pull_request?: Record<string, unknown>;
+}

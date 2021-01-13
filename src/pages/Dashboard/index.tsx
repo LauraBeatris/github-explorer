@@ -8,9 +8,10 @@ import { Button } from "components/Button";
 import { Layout } from "components/Layout";
 import { Input } from "components/Input";
 import { Repository } from "components/Repository";
-import { List } from "styles/components";
 
-import { Form, Title, AddRepositoryInputError } from "./styles";
+import {
+  Form, Title, RepositoriesList, AddRepositoryInputError,
+} from "./styles";
 import { RepositoryFormValues } from "./types";
 
 export function Dashboard() {
@@ -78,13 +79,13 @@ export function Dashboard() {
         </AddRepositoryInputError>
       )}
 
-      <List>
+      <RepositoriesList>
         {repositories.map(repository => (
           <li key={repository.full_name}>
             <Repository repository={repository} />
           </li>
         ))}
-      </List>
+      </RepositoriesList>
     </Layout>
   );
 }

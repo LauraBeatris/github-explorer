@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import media from "styled-media-query";
 
+import { List } from "styles/components";
+
 export const Title = styled.h1`
   font-size: 48px;
   color: ${({ theme }) => theme.colors.dark};
@@ -11,7 +13,6 @@ export const Title = styled.h1`
 
 export const Form = styled.form`
   margin-top: 40px;
-  margin-bottom: 80px;
   max-width: 700px;
   width: 100%;
   display: flex;
@@ -98,4 +99,8 @@ export const AddRepositoryInputError = styled.span`
   display: block;
   color: ${({ theme }) => theme.colors.error};
   margin-top: 8px;
+`;
+
+export const RepositoriesList = styled(List)`
+  margin-top: 80px;
 `;

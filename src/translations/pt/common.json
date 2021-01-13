@@ -10,5 +10,8 @@
   "errors": {
     "this_repository_has_already_been_added": "Esse repositório já foi adicionado",
     "the_repository_could_not_be_found": "Não foi possível encontrar o repositório"
+  },
+  "yup": {
+    "mixed_required_field": "Campo obrigatório."
   }
 }

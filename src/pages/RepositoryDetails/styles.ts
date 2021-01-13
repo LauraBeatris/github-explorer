@@ -59,6 +59,7 @@ export const RepositoryError = styled.h3`
 `;
 
 export const TabsContainer = styled.div`
+  flex: 1;
   margin-top: 20px;
 `;
 

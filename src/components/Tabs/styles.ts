@@ -8,7 +8,9 @@ import {
 import { lighten } from "polished";
 
 export const StyledTabs = styled(Tabs)`
+  height: 100%;
   padding: 20px 0;
+  display: flex;
   flex-direction: column;
 `;
 
@@ -48,6 +50,7 @@ export const StyledTab = styled(Tab)`
 
 export const StyledTabPanel = styled(TabPanel)`
   &.react-tabs__tab-panel--selected {
+    flex: 1;
     padding-top: 20px;
   }
 `;

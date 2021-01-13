@@ -1,6 +1,7 @@
 import React from "react";
 import { FiChevronLeft } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { Layout } from "components/Layout";
 import { Header } from "components/Header";
@@ -18,11 +19,13 @@ import {
 } from "./styles";
 
 function RepositoryDetailsLayoutHeader() {
+  const [t] = useTranslation();
+
   return (
     <Header>
       <Link to="/">
         <FiChevronLeft size={16} />
-        Voltar
+        {t("buttons.back")}
       </Link>
     </Header>
   );

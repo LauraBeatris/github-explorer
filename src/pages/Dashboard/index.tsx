@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useTranslation } from "react-i18next";
 
 import { useRepositories } from "hooks/useRepositories";
 import { addRepositorySchema } from "schemas/addRepositorySchema";
@@ -28,6 +29,8 @@ export function Dashboard() {
 
   const { repositories, addRepository, isLoading } = useRepositories();
 
+  const [t] = useTranslation();
+
   const onSubmit: SubmitHandler<RepositoryFormValues> = async (
     data,
   ) => {
@@ -51,7 +54,7 @@ export function Dashboard() {
 
   return (
     <Layout>
-      <Title>Explore repositórios no GitHub</Title>
+      <Title>{t("dashboard.title")}</Title>
 
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
@@ -61,7 +64,7 @@ export function Dashboard() {
           name="repositoryName"
           hasError={hasError}
           aria-label="Repository Name"
-          placeholder="Digite o nome do repositório"
+          placeholder={t("dashboard.repository_name_placeholder")}
         />
 
         <Button
@@ -69,7 +72,7 @@ export function Dashboard() {
           isLoading={isLoading}
           disabled={isButtonDisabled}
         >
-          Pesquisar
+          {t("buttons.search")}
         </Button>
       </Form>
 

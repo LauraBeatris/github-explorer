@@ -1,5 +1,6 @@
 import { useMemo, useState, useCallback } from "react";
 import { useLocalStorage } from "@rehooks/local-storage";
+import { useTranslation } from "react-i18next";
 
 import { REPOSITORIES_STORAGE_KEY } from "constants/storage";
 import { Repository } from "shared/githubAPI";
@@ -13,7 +14,10 @@ export function useRepositories() {
     repositories,
     setRepositories,
   ] = useLocalStorage<Repository[]>(REPOSITORIES_STORAGE_KEY, []);
+
   const [isLoading, setIsLoading] = useState(false);
+
+  const [t] = useTranslation();
 
   const addRepository = useCallback(async (repositoryName: string) => {
     const findRepositoryWithTheSameName = repositories.find(
@@ -21,7 +25,7 @@ export function useRepositories() {
     );
 
     if (findRepositoryWithTheSameName) {
-      throw new Error("Esse repositório já foi adicionado");
+      throw new Error(t("errors.this_repository_has_already_been_added"));
     }
 
     try {
@@ -34,11 +38,15 @@ export function useRepositories() {
         ...repositories,
       ]);
     } catch (err) {
-      throw new Error("Não foi possível encontrar o repositório");
+      throw new Error(t("errors.the_repository_could_not_be_found"));
     } finally {
       setIsLoading(false);
     }
-  }, [repositories, setRepositories]);
+  }, [
+    t,
+    repositories,
+    setRepositories,
+  ]);
 
   const payload = useMemo(() => ({
     isLoading,

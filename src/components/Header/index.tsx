@@ -1,16 +1,10 @@
-import React from "react";
-import { FiChevronLeft } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import React, { PropsWithChildren } from "react";
 
 import logo from "assets/logo.svg";
 
 import { Container } from "./styles";
 
-interface HeaderProps {
-  backToDashboard?: boolean;
-}
-
-export function Header({ backToDashboard }: HeaderProps) {
+export function Header({ children }: PropsWithChildren<unknown>) {
   return (
     <Container>
       <img
@@ -20,12 +14,7 @@ export function Header({ backToDashboard }: HeaderProps) {
         title="GitHub Explorer | Explore amazing repositories"
       />
 
-      {backToDashboard && (
-        <Link to="/">
-          <FiChevronLeft size={16} />
-          Voltar
-        </Link>
-      )}
+      {children}
     </Container>
   );
 }

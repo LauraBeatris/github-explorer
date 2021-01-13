@@ -1,134 +1,91 @@
-import React, {
-  useRef,
-  useState,
-  FormEvent,
-  useEffect,
-} from "react";
-import { FiChevronRight } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import React from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Header } from "components/Header";
-import { api } from "services/api";
+import { useRepositories } from "hooks/useRepositories";
+import { addRepositorySchema } from "schemas/addRepositorySchema";
+import { Button } from "components/Button";
+import { Layout } from "components/Layout";
+import { Input } from "components/Input";
+import { Repository } from "components/Repository";
+import { List } from "styles/components";
 
-import {
-  Repositories,
-  Container,
-  Title,
-  Form,
-  Error,
-} from "./styles";
-
-interface Repository {
-  full_name: string;
-  description: string;
-  owner: {
-    login: string;
-    avatar_url: string;
-  };
-}
+import { Form, Title, AddRepositoryInputError } from "./styles";
+import { RepositoryFormValues } from "./types";
 
 export function Dashboard() {
-  const repositoryInputRef = useRef<HTMLInputElement>(null);
-  const [repositories, setRepositories] = useState<Repository[]>(() => {
-    const storagedRepositories = localStorage.getItem(
-      "@GithubExplorer:repositories",
-    );
-
-    if (storagedRepositories) {
-      return JSON.parse(storagedRepositories);
-    }
-    return [];
+  const {
+    errors,
+    setError,
+    register,
+    formState,
+    handleSubmit,
+  } = useForm({
+    mode: "onChange",
+    resolver: yupResolver(addRepositorySchema),
   });
 
-  const [inputError, setInputError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const { repositories, addRepository, isLoading } = useRepositories();
 
-  useEffect(() => {
-    localStorage.setItem(
-      "@GithubExplorer:repositories",
-      JSON.stringify(repositories),
-    );
-  }, [repositories]);
-
-  async function handleAddRepository(
-    event: FormEvent<HTMLFormElement>,
-  ): Promise<void> {
-    event.preventDefault();
-    const newRepo = repositoryInputRef?.current?.value;
-
-    if (!newRepo) return setInputError("Digite o nome do repositório");
-
-    const findRepositoryWithTheSameName = repositories.find(
-      repository => newRepo === repository.full_name,
-    );
-    if (findRepositoryWithTheSameName) return setInputError("Esse repositório já foi adicionado");
+  const onSubmit: SubmitHandler<RepositoryFormValues> = async (
+    data,
+  ) => {
+    const { repositoryName } = data;
 
     try {
-      setLoading(true);
-
-      const response = await api.get(`repos/${newRepo}`);
-      const repository = response.data;
-
-      setRepositories(currentRepositories => [
-        repository,
-        ...currentRepositories,
-      ]);
-      setInputError("");
-      if (repositoryInputRef.current) repositoryInputRef.current.value = "";
-
-      return repository;
-    } catch (err) {
-      setInputError("Não foi possível encontrar o repositório");
-      return err;
-    } finally {
-      setLoading(false);
+      await addRepository(repositoryName);
+    } catch (error) {
+      setError("repositoryName", {
+        type: "manual",
+        message: error.message,
+      });
     }
-  }
+  };
+
+  const { isDirty, isValid } = formState;
+  const { repositoryName: repositoryNameError } = errors;
+
+  const isButtonDisabled = isLoading || !isValid || !isDirty;
+  const hasError = Boolean(repositoryNameError?.message) && !isValid && isDirty;
 
   return (
-    <Container>
-      <Header />
-
+    <Layout>
       <Title>Explore repositórios no GitHub</Title>
 
-      <Form hasError={!!inputError} onSubmit={handleAddRepository}>
-        <input
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          id="repositoryName"
+          ref={register}
           type="text"
-          name="repository"
-          id="repository"
+          name="repositoryName"
+          hasError={hasError}
+          aria-label="Repository Name"
           placeholder="Digite o nome do repositório"
-          ref={repositoryInputRef}
         />
-        <button type="submit" disabled={loading}>
-          {loading ? "Carregando..." : "Pesquisar"}
-        </button>
+
+        <Button
+          type="submit"
+          isLoading={isLoading}
+          disabled={isButtonDisabled}
+        >
+          Pesquisar
+        </Button>
       </Form>
 
-      {inputError && <Error>{inputError}</Error>}
+      {repositoryNameError && (
+        <AddRepositoryInputError>
+          {repositoryNameError.message}
+        </AddRepositoryInputError>
+      )}
 
-      <Repositories>
+      <List>
         {repositories.map(repository => (
           <li key={repository.full_name}>
-            <Link to={`/repositories/${repository.full_name}`}>
-              <img
-                src={repository.owner.avatar_url}
-                alt={repository.owner.login}
-                aria-label={repository.owner.login}
-                title={repository.owner.login}
-              />
-
-              <div>
-                <strong>{repository.full_name}</strong>
-
-                <p>{repository.description}</p>
-              </div>
-
-              <FiChevronRight size={18} />
-            </Link>
+            <Repository repository={repository} />
           </li>
         ))}
-      </Repositories>
-    </Container>
+      </List>
+    </Layout>
   );
 }
 

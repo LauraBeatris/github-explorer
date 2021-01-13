@@ -1,0 +1,14 @@
+{
+  "dashboard": {
+    "title": "Explore repositórios no GitHub",
+    "repository_name_placeholder": "Digite o nome do repositório"
+  },
+  "buttons": {
+    "search": "Pesquisar",
+    "back": "Voltar"
+  },
+  "errors": {
+    "this_repository_has_already_been_added": "Esse repositório já foi adicionado",
+    "the_repository_could_not_be_found": "Não foi possível encontrar o repositório"
+  }
+}

@@ -1,15 +1,17 @@
 import React from "react";
 import { FiChevronLeft } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { PulseLoader } from "react-spinners";
 
 import { Layout } from "components/Layout";
 import { Header } from "components/Header";
 import { Repository } from "shared/githubAPI";
 import { useSelectedRepository } from "contexts/SelectedRepositoryContext";
-import { colors } from "styles/theme/colors";
+import { Tabs } from "components/Tabs";
+import { REPOSITORY_DETAILS_TABS } from "constants/tabs";
+import { Loading } from "components/Loading";
 
 import {
+  TabsContainer,
   RepositoryDetailsHeader,
   RepositoryDetailsContainer,
   RepositoryDetailsLoadingContainer,
@@ -40,22 +42,29 @@ export function RepositoryDetails() {
     <Layout header={<RepositoryDetailsLayoutHeader />}>
       <RepositoryDetailsContainer>
         {shouldShowRepositoryDetailsHeader(selectedRepository, isLoading) ? (
-          <RepositoryDetailsHeader>
-            <img
-              src={selectedRepository.owner?.avatar_url}
-              alt={selectedRepository.owner?.login}
-              aria-label={selectedRepository.owner?.login}
-              title={selectedRepository.owner?.login}
-            />
+          <>
+            <RepositoryDetailsHeader>
+              <img
+                src={selectedRepository.owner?.avatar_url}
+                alt={selectedRepository.owner?.login}
+                aria-label={selectedRepository.owner?.login}
+                title={selectedRepository.owner?.login}
+              />
 
-            <div>
-              <strong>{selectedRepository.full_name}</strong>
-              <p>{selectedRepository.description}</p>
-            </div>
-          </RepositoryDetailsHeader>
+              <div>
+                <strong>{selectedRepository.full_name}</strong>
+                <p>{selectedRepository.description}</p>
+              </div>
+
+            </RepositoryDetailsHeader>
+
+            <TabsContainer>
+              <Tabs tabs={REPOSITORY_DETAILS_TABS} />
+            </TabsContainer>
+          </>
         ) : (
           <RepositoryDetailsLoadingContainer>
-            <PulseLoader color={colors.dark} size={15} />
+            <Loading />
           </RepositoryDetailsLoadingContainer>
         )}
       </RepositoryDetailsContainer>

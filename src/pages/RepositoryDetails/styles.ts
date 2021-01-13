@@ -8,15 +8,6 @@ export const RepositoryDetailsContainer = styled.div`
   flex-direction: column;
 `;
 
-export const RepositoryDetailsLoadingContainer = styled.div`
-  flex: 1;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin-top: -80px;
-  justify-content: center;
-`;
-
 export const RepositoryDetailsHeader = styled.header`
   display: flex;
   align-items: center;
@@ -38,6 +29,10 @@ export const RepositoryDetailsHeader = styled.header`
   div {
     margin-left: 24px;
     flex: 1;
+
+    ${media.lessThan("medium")`
+      margin-left: 0px;
+    `}
 
     strong,
     p {
@@ -61,4 +56,17 @@ export const RepositoryError = styled.h3`
   margin-right: auto;
   margin-top: 80px;
   color: ${({ theme }) => theme.colors["gray-dark"]};
+`;
+
+export const TabsContainer = styled.div`
+  margin-top: 20px;
+`;
+
+export const RepositoryDetailsLoadingContainer = styled.div`
+  flex: 1;
+  width: 100%;
+  display: flex;
+  margin-top: -80px;
+  align-items: center;
+  justify-content: center;
 `;

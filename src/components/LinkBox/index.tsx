@@ -18,7 +18,7 @@ export function LinkBox({
       <div>
         <strong>{title}</strong>
 
-        <p>{description}</p>
+        {description && <p>{description}</p>}
       </div>
 
       <FiChevronRight size={18} />

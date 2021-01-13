@@ -9,11 +9,11 @@
    <img src=".github/docs/images/repository-details.gif" width="500"/>
 </p>
 
-[![Author](https://img.shields.io/badge/author-LauraBeatris-FB8F0A?style=flat-square)](https://github.com/LauraBeatris)
-[![Languages](https://img.shields.io/github/languages/count/LauraBeatris/github-explorer?color=%23FB8F0A&style=flat-square)](#)
-[![Stars](https://img.shields.io/github/stars/LauraBeatris/github-explorer?color=FB8F0A&style=flat-square)](https://github.com/LauraBeatris/github-explorer/stargazers)
-[![Forks](https://img.shields.io/github/forks/LauraBeatris/github-explorer?color=%23FB8F0A&style=flat-square)](https://github.com/LauraBeatris/github-explorer/network/members)
-[![Contributors](https://img.shields.io/github/contributors/LauraBeatris/github-explorer?color=FB8F0A&style=flat-square)](https://github.com/LauraBeatris/github-explorer/graphs/contributors)
+[![Author](https://img.shields.io/badge/author-LauraBeatris-3D3D4D?style=flat-square)](https://github.com/LauraBeatris)
+[![Languages](https://img.shields.io/github/languages/count/LauraBeatris/github-explorer?color=%233D3D4D&style=flat-square)](#)
+[![Stars](https://img.shields.io/github/stars/LauraBeatris/github-explorer?color=3D3D4D&style=flat-square)](https://github.com/LauraBeatris/github-explorer/stargazers)
+[![Forks](https://img.shields.io/github/forks/LauraBeatris/github-explorer?color=%233D3D4D&style=flat-square)](https://github.com/LauraBeatris/github-explorer/network/members)
+[![Contributors](https://img.shields.io/github/contributors/LauraBeatris/github-explorer?color=3D3D4D&style=flat-square)](https://github.com/LauraBeatris/github-explorer/graphs/contributors)
 
 ---
 

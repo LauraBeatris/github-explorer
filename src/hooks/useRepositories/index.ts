@@ -6,9 +6,6 @@ import { REPOSITORIES_STORAGE_KEY } from "constants/storage";
 import { Repository } from "shared/githubAPI";
 import { getRepository } from "services/api";
 
-/**
- * Handle the list of repositories stored in the local storage.
- */
 export function useRepositories() {
   const [
     repositories,
